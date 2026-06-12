@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    container_name: ecoverde-prod
+    restart: unless-stopped
+
+    ports:
+      - "8081:8080"
+
+    volumes:
+      - datos_app:/datos
+
+    secrets:
+      - banner_msg
+
+volumes:
+  datos_app:
+
+secrets:
+  banner_msg:
+    file: ./secrets/banner_msg.txt
